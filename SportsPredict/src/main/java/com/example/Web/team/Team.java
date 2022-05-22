@@ -1,6 +1,21 @@
-package com.example.team;
+package com.example.Web.team;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 
 public class Team {
+    @Id
+    @SequenceGenerator(
+            name = "team_sequence",
+            sequenceName = "team_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "team_sequence"
+    )
     private long id;
     private String name;
     private int wins;
