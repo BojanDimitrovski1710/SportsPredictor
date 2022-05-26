@@ -1,25 +1,30 @@
 package com.example.Web.team;
 
+import com.example.Web.league.League;
+import com.example.Web.match.Match;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table
+@Access(AccessType.FIELD)
 public class Team {
+
     @Id
-    @SequenceGenerator(
-            name = "team_sequence",
-            sequenceName = "team_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "team_sequence"
-    )
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long Id;
     private String name;
     private int wins;
     private int losses;
     private int differencial;
+    @ManyToMany
+    private List<League> leagueList;
+    @ManyToMany
+    private List<Match> matchList;
+
+    public Team() {
+    }
 
     public Team(String name) {
         this.name = name;
@@ -33,6 +38,24 @@ public class Team {
         this.wins = wins;
         this.losses = losses;
         this.differencial = this.wins - this.losses;
+    }
+
+    @ManyToMany
+    public List<League> getLeagueList() {
+        return leagueList;
+    }
+
+    @ManyToMany
+    public List<Match> getMatchList() {
+        return matchList;
+    }
+
+    public void setMatchList(List<Match> matchList) {
+        this.matchList = matchList;
+    }
+
+    public void setLeagueList(List<League> leagueList) {
+        this.leagueList = leagueList;
     }
 
     public String getName() {

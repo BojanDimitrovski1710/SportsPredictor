@@ -7,32 +7,18 @@ import java.util.List;
 
 @Entity
 @Table
-@Access(AccessType.PROPERTY)
+@Access(AccessType.FIELD)
 public class League {
-    @SequenceGenerator(
-            name = "league_sequence",
-            sequenceName = "league_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "league_sequence"
-    )
+
     @Id
-    private long id;
-
-    public String getName() {
-        return name;
-    }
-
-    @OneToMany(mappedBy = "name")
-    public List<Team> getParticipating_teams() {
-        return participating_teams;
-    }
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long Id;
     private String name;
-    @ElementCollection(targetClass = Team.class)
+    @ManyToMany
     private List<Team> participating_teams;
+
+    public League() {
+    }
 
     public League(String name) {
         this.name = name;
@@ -41,5 +27,14 @@ public class League {
     public League(String name, List<Team> participating_teams) {
         this.name = name;
         this.participating_teams = participating_teams;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    @ManyToMany
+    public List<Team> getParticipating_teams() {
+        return participating_teams;
     }
 }

@@ -3,22 +3,19 @@ package com.example.Web.match;
 import com.example.Web.team.Team;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table
+@Access(AccessType.FIELD)
 public class Match {
     @Id
-    @SequenceGenerator(
-            name = "match_sequence",
-            sequenceName = "match_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "match_sequence"
-    )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long Id;
-    private Team home;
+    @ManyToMany
+    private List<Team> participatingTeams;
+    private int home_goals;
+    private int away_goals;
 
     public long getId() {
         return Id;
@@ -28,20 +25,9 @@ public class Match {
         Id = id;
     }
 
-    public Team getHome() {
-        return home;
-    }
-
-    public void setHome(Team home) {
-        this.home = home;
-    }
-
-    public Team getAway() {
-        return away;
-    }
-
-    public void setAway(Team away) {
-        this.away = away;
+    @ManyToMany
+    public List<Team> getParticipatingTeams() {
+        return participatingTeams;
     }
 
     public int getHome_goals() {
@@ -59,8 +45,4 @@ public class Match {
     public void setAway_goals(int away_goals) {
         this.away_goals = away_goals;
     }
-
-    private Team away;
-    private int home_goals;
-    private int away_goals;
 }
