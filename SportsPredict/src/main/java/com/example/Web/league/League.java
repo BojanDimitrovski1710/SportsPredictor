@@ -21,6 +21,14 @@ public class League {
     )
     private long id;
 
+    public String getName() {
+        return name;
+    }
+
+    public List<Team> getParticipating_teams() {
+        return participating_teams;
+    }
+
     private String name;
     private List<Team> participating_teams;
 
