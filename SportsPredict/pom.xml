@@ -14,7 +14,9 @@
 	<name>SportsPredict</name>
 	<description>A sports prediction social app</description>
 	<properties>
-		<java.version>17</java.version>
+		<java.version>16</java.version>
+		<maven.compiler.source> 1.16 </maven.compiler.source>
+		<maven.compiler.target> 1.16 </maven.compiler.target>
 	</properties>
 	<dependencies>
 		<dependency>

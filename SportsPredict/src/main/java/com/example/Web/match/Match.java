@@ -2,11 +2,10 @@ package com.example.Web.match;
 
 import com.example.Web.team.Team;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.*;
 
+@Entity
+@Table
 public class Match {
     @Id
     @SequenceGenerator(

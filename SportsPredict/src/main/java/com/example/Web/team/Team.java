@@ -1,10 +1,9 @@
 package com.example.Web.team;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.*;
 
+@Entity
+@Table
 public class Team {
     @Id
     @SequenceGenerator(
