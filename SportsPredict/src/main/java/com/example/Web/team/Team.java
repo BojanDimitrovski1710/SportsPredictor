@@ -2,12 +2,13 @@ package com.example.Web.team;
 
 import com.example.Web.league.League;
 import com.example.Web.match.Match;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table
+@Table()
 @Access(AccessType.FIELD)
 public class Team {
 
@@ -20,8 +21,8 @@ public class Team {
     private int differencial;
     @ManyToMany
     private List<League> leagueList;
-    @ManyToMany
-    private List<Match> matchList;
+    //@ManyToMany
+    //private List<Match> matchList;
 
     public Team() {
     }
@@ -40,11 +41,11 @@ public class Team {
         this.differencial = this.wins - this.losses;
     }
 
-    @ManyToMany
     public List<League> getLeagueList() {
         return leagueList;
     }
 
+    /*
     @ManyToMany
     public List<Match> getMatchList() {
         return matchList;
@@ -53,7 +54,7 @@ public class Team {
     public void setMatchList(List<Match> matchList) {
         this.matchList = matchList;
     }
-
+    */
     public void setLeagueList(List<League> leagueList) {
         this.leagueList = leagueList;
     }

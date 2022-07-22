@@ -1,6 +1,7 @@
 package com.example.Web.league;
 
 import com.example.Web.team.Team;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.util.List;
@@ -37,4 +38,9 @@ public class League {
     public List<Team> getParticipating_teams() {
         return participating_teams;
     }
+
+    public void addTeam(Team t){
+        this.participating_teams.add(t);
+    }
+
 }
