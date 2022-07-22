@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #1B2430;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -37,38 +37,50 @@
   }
 }
 
+.card{
+  width: 30% !important;
+  display: inline-flex !important;
+  border-radius: 0rem !important;
+  border-right-width: 0px !important;
+  border-top-width: 0px !important;
+  border-left-width: 0px !important;
+  padding-bottom: 0px !important;
+  border-bottom-width: 0px !important;
+}
+
 .main-card{
   text-align: center;
   position: relative;
   margin: 10px;
   width: 40%;
   height: 30%;
-  background-color: #282c34;
+  background-color: #444444;
 }
 
 .card-body{
-  background-color: #282c34;
-  color: wheat;
+  background-color: #444444;
+  color: white;
   border: 2px solid black;
 }
 
 .image-body{
-  background-color: #181a1f;
+  background-color: #EDEDED;
   border: 2px solid black;
+  border-bottom-width: 0px !important;
 }
 
 .header{
   text-align: center;
-  background-color: #0a142c;
-  color: wheat;
+  background-color: #444444;
+  color: white;
   padding: 2em;
 }
 
 .body-div{
-  background-color: #1a336e;
+  background-color: #171717;
   text-align: center;
 }
 
 .main-div{
-  background-color: #1a336e;
+  background-color: #171717;
 }
