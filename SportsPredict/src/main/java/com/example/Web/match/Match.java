@@ -17,6 +17,14 @@ public class Match {
     private int home_goals;
     private int away_goals;
 
+    public Match(List<Team> participatingTeams){
+        this.participatingTeams = participatingTeams;
+        this.home_goals = 0;
+        this.away_goals = 0;
+    }
+
+    public Match(){}
+
     public long getId() {
         return Id;
     }

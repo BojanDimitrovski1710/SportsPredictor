@@ -23,7 +23,7 @@ public class MatchService {
         return matchRepository.findAll();
     }
 
-    public void addLeague(Match match){
+    public void addMatch(Match match){
         Optional<Match> optionalMatch = matchRepository.findMatchById(match.getId());
 
         if(optionalMatch.isPresent()) {
@@ -32,7 +32,7 @@ public class MatchService {
         matchRepository.save(match);
     }
 
-    public void deleteLeague(Long matchId){
+    public void deleteMatch(Long matchId){
         boolean exists = matchRepository.existsById(matchId);
         if(!exists){
             throw new IllegalStateException("Match with Id " + matchId + " doesn't exist");

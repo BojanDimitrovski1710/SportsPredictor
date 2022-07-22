@@ -31,6 +31,12 @@ public class TeamService {
         teamRepository.save(team);
     }
 
+    /*
+    public void addTeamToLeague(Team t, League l){
+        t.setLeagueList(List.of(l));
+        teamRepository.save(t);
+    }
+    */
     public void deleteTeam(Long teamId){
         boolean exists = teamRepository.existsById(teamId);
         if(!exists){

@@ -5,6 +5,7 @@ import com.example.Web.match.Match;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -21,9 +22,10 @@ public class Team {
     private int differencial;
     @ManyToMany
     private List<League> leagueList;
-    //@ManyToMany
-    //private List<Match> matchList;
-
+    /*
+    @ManyToMany(targetEntity = Match.class, mappedBy = "participatingTeams", cascade = CascadeType.ALL)
+    private List<Match> matchList;
+    */
     public Team() {
     }
 
@@ -32,6 +34,7 @@ public class Team {
         this.wins = 0;
         this.losses = 0;
         this.differencial = 0;
+        this.leagueList = new ArrayList<>();
     }
 
     public Team(String name, int wins, int losses) {
@@ -57,6 +60,12 @@ public class Team {
     */
     public void setLeagueList(List<League> leagueList) {
         this.leagueList = leagueList;
+    }
+
+    @Override
+    public String toString(){
+        String result = this.Id + " " + this.name + " " + this.wins + "-" + this.losses + "\n";
+        return result;
     }
 
     public String getName() {
