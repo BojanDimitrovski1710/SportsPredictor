@@ -16,6 +16,7 @@ public class LeagueController {
         this.leagueService = leagueService;
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping
     public List<League> getLeagues(){
         return leagueService.getLeagues();

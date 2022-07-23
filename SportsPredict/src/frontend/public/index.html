@@ -41,3 +41,15 @@
     -->
   </body>
 </html>
+<script>
+  const api_url = "http://localhost:8080/api/v1/"
+  async function parseData(){
+    const url = api_url + "league";
+    const response = await fetch(url);
+    const data = await response.json();
+    console.log(data);
+    data.forEach(league => {
+      console.log(league.name);
+    });
+  }
+</script>
