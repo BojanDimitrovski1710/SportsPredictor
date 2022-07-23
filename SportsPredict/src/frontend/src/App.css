@@ -15,7 +15,7 @@
 
 .App-header {
   background-color: #1B2430;
-  min-height: 100vh;
+  min-height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -55,12 +55,13 @@
   width: 40%;
   height: 30%;
   background-color: #444444;
+  max-height: 150px !important;
+  max-width: 300px !important;
 }
 
 .card-body{
   background-color: #444444;
   color: white;
-  border: 2px solid black;
 }
 
 .image-body{
@@ -83,4 +84,8 @@
 
 .main-div{
   background-color: #171717;
+}
+
+html, body, div{
+  height: 100%;
 }
