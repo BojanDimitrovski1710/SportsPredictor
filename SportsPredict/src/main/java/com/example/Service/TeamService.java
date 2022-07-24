@@ -1,7 +1,6 @@
 package com.example.Service;
 
 import com.example.Repository.TeamRepository;
-import com.example.Web.league.League;
 import com.example.Web.team.Team;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +19,15 @@ public class TeamService {
 
     public List<Team> getTeams() {
         return teamRepository.findAll();
+    }
+
+    public Team getTeam(String name) {
+        Optional<Team> optionalTeam = teamRepository.findTeamByName(name);
+
+        if (!optionalTeam.isPresent()) {
+            throw new IllegalStateException("A Team with that name doesn't exists");
+        }
+        return optionalTeam.get();
     }
 
     public void addTeam(Team team){

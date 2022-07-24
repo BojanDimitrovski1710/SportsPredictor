@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import './index.js';
+import TextField from '@mui/material/TextField'
 
 function App() {
   return (
@@ -18,12 +19,12 @@ function App() {
           </div>
           <div className="card-body">
             <p className="card-text">Get League Info</p>
-            <button className="btn btn-success pull-right" onClick={window['parseData']}>Try me out!</button>
+            <a href="http://localhost:8080/api/v1/league" className="btn btn-success pull-right">Try me out!</a>
           </div>
         </div>
         <div className="card main-card">
         <div className='image-body'>
-          <h5 className="card-title">Match</h5>
+          <h5 className="card-title">Matches</h5>
         </div>
         <div className="card-body">
           <p className="card-text">Get Matches Info</p>
@@ -32,11 +33,65 @@ function App() {
       </div>
       <div className="card main-card">
         <div className='image-body'>
-          <h5 className="card-title">Team</h5>
+          <h5 className="card-title">Teams</h5>
         </div>
         <div className="card-body">
           <p className="card-text">Get Teams Info</p>
           <a href="http://localhost:8080/api/v1/team" className="btn btn-info pull-right">Try me out!</a>
+        </div>
+      </div>
+
+      <div className="card main-card input">
+        <div className='image-body'>
+          <h5 className="card-title">Create League</h5>
+        </div>
+        <div className="card-body">
+          <h3 className="card-text">Set League Info</h3>
+          <form action="http://localhost:8080/api/v1/league" method="POST">
+            <div class="form-group">
+              <input type="text" class="form-control" name="name" aria-describedby="teamHelp" placeholder="Enter League Name"/>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        </div>
+      </div>
+
+      <div className="card main-card input">
+        <div className='image-body'>
+          <h5 className="card-title">Create Match</h5>
+        </div>
+        <div className="card-body">
+          <h3 className="card-text">Set Match Info</h3>
+          <form action="http://localhost:8080/api/v1/match" method="POST">
+            <div class="form-group">
+              <input type="text" class="form-control" name="homeTeam" aria-describedby="matchHelp" placeholder="Enter Home Team Name"/>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="awayTeam" aria-describedby="matchHelp" placeholder="Enter Away Team Name"/>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        </div>
+      </div>
+
+      <div className="card main-card input">
+        <div className='image-body'>
+          <h5 className="card-title">Create Team</h5>
+        </div>
+        <div className="card-body">
+          <h3 className="card-text">Set Team Info</h3>
+          <form action="http://localhost:8080/api/v1/team" method="POST">
+            <div class="form-group">
+              <input type="text" class="form-control" name="name" aria-describedby="teamHelp" placeholder="Enter Team Name"/>
+            </div>
+            <div class="form-group">
+              <input type="number" class="form-control" name="wins" placeholder="Wins"/>
+            </div>
+            <div class="form-group">
+              <input type="number" class="form-control" name="losses" placeholder="Losses"/>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
         </div>
       </div>
       </div>

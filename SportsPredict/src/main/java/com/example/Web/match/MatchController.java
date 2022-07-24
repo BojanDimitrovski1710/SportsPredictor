@@ -12,10 +12,12 @@ import java.util.List;
 @RequestMapping("api/v1/match")
 public class MatchController {
     private final MatchService matchService;
+    private final TeamService teamService;
 
     @Autowired
-    public MatchController(MatchService matchService){
+    public MatchController(MatchService matchService, TeamService teamService){
         this.matchService = matchService;
+        this.teamService = teamService;
     }
 
     @GetMapping
@@ -24,7 +26,10 @@ public class MatchController {
     }
 
     @PostMapping
-    public void addNewMatch(@RequestBody Match match){
+    public void addNewMatch(@ModelAttribute MatchInfo matchInfo){
+        Team home = teamService.getTeam(matchInfo.getHomeTeam());
+        Team away = teamService.getTeam(matchInfo.getAwayTeam());
+        Match match = new Match(List.of(home, away));
         matchService.addMatch(match);
     }
 

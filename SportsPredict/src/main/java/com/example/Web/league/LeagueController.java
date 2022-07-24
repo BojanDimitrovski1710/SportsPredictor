@@ -1,6 +1,7 @@
 package com.example.Web.league;
 
 import com.example.Service.LeagueService;
+import com.example.Web.team.Team;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,8 +24,9 @@ public class LeagueController {
     }
 
     @PostMapping
-    public void addNewLeague(@RequestBody League league){
-        leagueService.addLeague(league);
+    public void addNewLeague(@ModelAttribute LeagueInfo leagueInfo){
+        League l = new League(leagueInfo.getName());
+        leagueService.addLeague(l);
     }
 
     @DeleteMapping(path = "{leagueId}")

@@ -1,8 +1,6 @@
 package com.example.Web.team;
 
-import com.example.Service.LeagueService;
 import com.example.Service.TeamService;
-import com.example.Web.league.League;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,13 +17,14 @@ public class TeamController {
     }
 
     @GetMapping
-    public String getTeams(){
-        return teamService.getTeams().toString();
+    public List<Team> getTeams(){
+        return teamService.getTeams();
     }
 
     @PostMapping
-    public void addNewTeam(@RequestBody Team team){
-        teamService.addTeam(team);
+    public void addNewTeam(@ModelAttribute TeamInfo teamInfo){
+        Team t = new Team(teamInfo.getName(), teamInfo.getWins(), teamInfo.getLosses());
+        teamService.addTeam(t);
     }
 
     @DeleteMapping(path = "{teamId}")

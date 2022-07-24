@@ -68,6 +68,7 @@
   background-color: #EDEDED;
   border: 2px solid black;
   border-bottom-width: 0px !important;
+  max-height: 38px !important;
 }
 
 .header{
@@ -88,4 +89,8 @@
 
 html, body, div{
   height: 100%;
+}
+
+.input{
+  min-height: 320px !important;
 }
