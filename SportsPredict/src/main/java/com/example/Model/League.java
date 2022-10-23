@@ -1,9 +1,4 @@
-package com.example.Web.league;
-
-import com.example.Repository.TeamRepository;
-import com.example.Service.TeamService;
-import com.example.Web.team.Team;
-import org.springframework.beans.factory.annotation.Autowired;
+package com.example.Model;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -42,7 +37,6 @@ public class League {
         return name;
     }
 
-    @ManyToMany
     public List<Team> getParticipating_teams() {
         return participating_teams;
     }

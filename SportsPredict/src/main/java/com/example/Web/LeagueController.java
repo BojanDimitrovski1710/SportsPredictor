@@ -1,7 +1,7 @@
-package com.example.Web.league;
+package com.example.Web;
 
+import com.example.Model.League;
 import com.example.Service.LeagueService;
-import com.example.Web.team.Team;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

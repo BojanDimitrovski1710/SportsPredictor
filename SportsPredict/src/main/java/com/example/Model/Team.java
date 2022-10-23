@@ -1,8 +1,4 @@
-package com.example.Web.team;
-
-import com.example.Web.league.League;
-import com.example.Web.match.Match;
-import org.hibernate.annotations.Cascade;
+package com.example.Model;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -21,11 +17,7 @@ public class Team {
     private int losses;
     private int differencial;
     @ManyToMany
-    private List<League> leagueList;
-    /*
-    @ManyToMany(targetEntity = Match.class, mappedBy = "participatingTeams", cascade = CascadeType.ALL)
-    private List<Match> matchList;
-    */
+    private League league;
     public Team() {
     }
 
@@ -34,7 +26,7 @@ public class Team {
         this.wins = 0;
         this.losses = 0;
         this.differencial = 0;
-        this.leagueList = new ArrayList<>();
+        this.league = new League();
     }
 
     public Team(String name, int wins, int losses) {
@@ -44,22 +36,12 @@ public class Team {
         this.differencial = this.wins - this.losses;
     }
 
-    public List<League> getLeagueList() {
-        return leagueList;
+    public League getLeague() {
+        return league;
     }
 
-    /*
-    @ManyToMany
-    public List<Match> getMatchList() {
-        return matchList;
-    }
-
-    public void setMatchList(List<Match> matchList) {
-        this.matchList = matchList;
-    }
-    */
-    public void setLeagueList(List<League> leagueList) {
-        this.leagueList = leagueList;
+    public void setLeague(League league) {
+        this.league = league;
     }
 
     @Override

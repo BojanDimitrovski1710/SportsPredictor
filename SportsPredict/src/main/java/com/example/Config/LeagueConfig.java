@@ -1,11 +1,11 @@
-package com.example.Web.sportspredict;
+package com.example.Config;
 
+import com.example.Model.League;
+import com.example.Model.Match;
+import com.example.Model.Team;
 import com.example.Repository.LeagueRepository;
 import com.example.Repository.MatchRepository;
 import com.example.Repository.TeamRepository;
-import com.example.Web.league.League;
-import com.example.Web.match.Match;
-import com.example.Web.team.Team;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;

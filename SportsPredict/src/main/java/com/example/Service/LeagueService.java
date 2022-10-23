@@ -1,8 +1,12 @@
 package com.example.Service;
 
+import com.example.Model.Exceptions.InvalidLeagueIdException;
+import com.example.Model.Exceptions.TeamNotInLeagueException;
+import com.example.Model.Match;
+import com.example.Model.Team;
 import com.example.Repository.LeagueRepository;
-import com.example.Web.league.League;
-import com.example.Web.team.Team;
+import com.example.Model.League;
+import com.example.Repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,30 +16,34 @@ import java.util.Optional;
 @Service
 public class LeagueService {
     private final LeagueRepository leagueRepository;
+    private final TeamRepository teamRepository;
 
     @Autowired
-    public LeagueService(LeagueRepository leagueRepository) {
+    public LeagueService(LeagueRepository leagueRepository, TeamRepository teamRepository) {
         this.leagueRepository = leagueRepository;
+        this.teamRepository = teamRepository;
     }
 
-    public List<League> getLeagues() {
-        return leagueRepository.findAll();
-    }
-
-    public void addLeague(League league){
-        Optional<League> optionalLeague = leagueRepository.findLeagueByName(league.getName());
-
-        if(optionalLeague.isPresent()) {
-            throw new IllegalStateException("A League with that name already exists");
+    public League findById(Long id){
+        Optional<League> target = this.leagueRepository.findById(id);
+        if(target.isPresent()){
+            return target.get();
+        }else{
+            throw new InvalidLeagueIdException();
         }
-        leagueRepository.save(league);
     }
 
-    public void deleteLeague(Long leagueId){
-        boolean exists = leagueRepository.existsById(leagueId);
-        if(!exists){
-            throw new IllegalStateException("League with Id " + leagueId + " doesn't exist");
-        }
-        leagueRepository.deleteById(leagueId);
+
+
+    public List<League> listAll(){
+        return this.leagueRepository.findAll();
     }
+
+    public League create(String name){
+        League newLeague = new League(name);
+        this.leagueRepository.save(newLeague);
+        return newLeague;
+    }
+
+
 }

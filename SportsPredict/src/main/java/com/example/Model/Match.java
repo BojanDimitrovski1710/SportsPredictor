@@ -1,6 +1,4 @@
-package com.example.Web.match;
-
-import com.example.Web.team.Team;
+package com.example.Model;
 
 import javax.persistence.*;
 import java.util.List;
